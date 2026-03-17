@@ -3,6 +3,9 @@ mkdir -p logs
 datasets=(gsm8k math500 humaneval mbpp mt-bench alpaca)
 
 export SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1
+export SGLANG_ENABLE_SPEC_V2=1
+export SGLANG_ENABLE_DFLASH_SPEC_V2=1
+export SGLANG_ENABLE_OVERLAP_PLAN_STREAM=1
 
 for i in "${!datasets[@]}"; do
   ds="${datasets[$i]}"
