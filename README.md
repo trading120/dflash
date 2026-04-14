@@ -47,6 +47,8 @@ uv pip install -U vllm --torch-backend=auto --extra-index-url https://wheels.vll
 
 > **Note:** I've been testing primarily with the vLLM backend on an 8xH100 node. The SGLang backend works well too but requires the `SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1` env var — easy to miss if you're setting up for the first time.
 
+> **Personal note (fork):** I'm running this on a 4xA100 (40GB) setup. With Qwen3-8B as the target and `num_speculative_tokens=10`, memory usage sits comfortably under budget. Haven't tried the 27B models locally yet.
+
 ## 🚀 Quick Start
 
 ### vLLM
@@ -54,15 +56,5 @@ uv pip install -U vllm --torch-backend=auto --extra-index-url https://wheels.vll
 ```bash
 vllm serve Qwen/Qwen3.5-27B \
   --speculative-config '{"method": "dflash", "model": "z-lab/Qwen3.5-27B-DFlash", "num_speculative_tokens": 15}' \
-  --attention-backend flash_attn \
-  --max-num-batched-tokens 32768
-```
-
-### SGLang
-
-```bash
-export SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1
-
-# Optional: enable schedule overlapping (experimental, may not be stable)
-# export SGLANG_ENABLE_SPEC_V2=
+  --att
 ```
