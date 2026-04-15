@@ -6,4 +6,5 @@
 from .model import DFlashDraftModel, load_and_process_dataset, sample, extract_context_feature
 
 # Default verbosity for local debugging
-DEBUG = False
+# Set to True to enable verbose logging during model runs
+DEBUG = True
