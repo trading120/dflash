@@ -47,4 +47,4 @@ uv pip install -U vllm --torch-backend=auto --extra-index-url https://wheels.vll
 
 > **Note:** I've been testing primarily with the vLLM backend on an 8xH100 node. The SGLang backend works well too but requires the `SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1` env var — easy to miss if you're setting up for the first time.
 
-> **Personal note (fork):** I'm running this on a 4xA100 (40GB) setup. With Qwen3-8B as the target and `num_speculative_tokens=10`, memory usage sits comfortably under budget. Haven't tried anything larger than Qwen3-8B yet on this hardware — Qwen3.5-27B would likely require tensor parallelism across all 4 GPUs and I haven't had a chance to test that. If you're on a similar setup and get it working, let me know.
+> **Personal note (fork):** I'm running this on a 4xA100 (40GB) setup. With Qwen3-8B as the target and `num_speculative_tokens=10`, memory usage sits comfortably under budget. Haven't tried the larger MoE models yet (Qwen3.5-35B-A3B looks promising for my use case). Also worth noting: if you're on CUDA 11.x you may need to pin `torch==2.3.0` before installing the vLLM nightly — ran into a wheel mismatch otherwise.
