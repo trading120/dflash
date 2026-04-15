@@ -8,3 +8,6 @@ from .model import DFlashDraftModel, load_and_process_dataset, sample, extract_c
 # Default verbosity for local debugging
 # Set to True to enable verbose logging during model runs
 DEBUG = True
+
+# Convenience alias - shorter to type in notebook cells
+DraftModel = DFlashDraftModel
